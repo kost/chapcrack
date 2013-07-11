@@ -41,13 +41,17 @@ class ParseCommand(Command):
                 c1, c2, c3 = complete[server][client].getCiphertext()
                 plaintext  = complete[server][client].getPlaintext()
                 username   = complete[server][client].getUserName()
+                onlyusername = complete[server][client].getOnlyUserName()
                 k3         = self._getK3(plaintext, c3)
 
-                self._printParameters(username, plaintext, c1, c2, c3, k3)
+                self._printParameters(onlyusername, username, plaintext, c1, c2, c3, k3)
 
-    def _printParameters(self, username, plaintext, c1, c2, c3, k3):
+    def _printParameters(self, onlyusername, username, plaintext, c1, c2, c3, k3):
         if username is not None:
             print "                   User = %s" % username
+
+	if onlyusername is not None:
+	    print "              Only User = %s" % onlyusername
 
         print "                     C1 = %s" % c1.encode("hex")
         print "                     C2 = %s" % c2.encode("hex")

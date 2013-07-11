@@ -47,6 +47,13 @@ class ChapStateManager:
         assert self.isComplete()
         return self.handshake['response'].getName()
 
+    def getOnlyUserName(self):
+	assert self.isComplete()
+	userarr = self.getUserName().split('\\')
+	if userarr>1:
+		return userarr[1]
+	return userarr[0]
+
     def getCiphertext(self):
         ntResponse = self.getNtResponse()
         return ntResponse[0:8], ntResponse[8:16], ntResponse[16:24]
@@ -54,7 +61,7 @@ class ChapStateManager:
     def getPlaintext(self):
         authenticatorChallenge = self.handshake['challenge'].getChallenge()
         peerChallenge          = self.handshake['response'].getPeerChallenge()
-        username               = self.handshake['response'].getName()
+        username               = self.getOnlyUserName()
 
         sha = hashlib.sha1()
         sha.update(peerChallenge)
