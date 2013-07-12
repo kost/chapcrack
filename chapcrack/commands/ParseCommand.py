@@ -50,8 +50,8 @@ class ParseCommand(Command):
         if username is not None:
             print "                   User = %s" % username
 
-	if onlyusername is not None:
-	    print "              Only User = %s" % onlyusername
+    if onlyusername is not None:
+            print "              Only User = %s" % onlyusername
 
         print "                     C1 = %s" % c1.encode("hex")
         print "                     C2 = %s" % c2.encode("hex")

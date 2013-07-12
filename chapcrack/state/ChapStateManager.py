@@ -48,11 +48,11 @@ class ChapStateManager:
         return self.handshake['response'].getName()
 
     def getOnlyUserName(self):
-	assert self.isComplete()
-	userarr = self.getUserName().split('\\')
-	if userarr>1:
-		return userarr[1]
-	return userarr[0]
+        assert self.isComplete()
+        userarr = self.getUserName().split('\\')
+        if userarr>1:
+                return userarr[1]
+        return userarr[0]
 
     def getCiphertext(self):
         ntResponse = self.getNtResponse()
